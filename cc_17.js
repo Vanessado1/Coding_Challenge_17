@@ -47,3 +47,33 @@ class VIPCustomer extends Customer {
         return totalSpent + loyaltyBonus; // return total spent with the bonus added 
     }
 }
+// created customers regular and vip
+let customer1 = new Customer('Beth Anderson', 'beth.andy@gmail.com');
+let customer2 = new Customer('Jonas Richy', 'richy3345@mgail.com');
+let vipCustomer1 = new VIPCustomer('Andy Johnson', 'johnson.a23@gmail.com');
+let vipCustomer2 = new VIPCustomer('Janet Brown', 'j.brown482@gmail.com');
+// added purchases to customers 
+customer1.addPurchase(34);
+customer2.addPurchase(56);
+vipCustomer1.addPurchase(90);
+vipCustomer2.addPurchase(120);
+// created sales rep and added customers to their client list 
+let SalesRep1 = new SalesRep('Alex Micheal');
+SalesRep1.addClient(customer1);
+SalesRep1.addClient(customer2);
+SalesRep1.addClient(vipCustomer1);
+SalesRep1.addClient(vipCustomer2);
+// calculate total revenue from all customers
+let totalRevenue = SalesRep1.clients.reduce((total, client) => total + client.getTotalSpent(), 0);
+console.log(`Total revenue from all customers: $${totalRevenue}`);
+// find customers who spent more than $500
+let highSpenders = SalesRep1.clients.filter(client => client.getTotalSpent() > 500);
+console.log(`Customers who spent over $500:`);
+highSpenders.forEach(client => console.log(`${client.name}: $${client.getTotalSpent()}`));
+// created an array of customer names and total spent 
+let customerSpending = SalesRep1.clients.map(client => ({
+    name: client.name,
+    totalSpent: client.getTotalSpent()
+}));
+console.log('Customer names and total spent:');
+customerSpending.forEach(client => console.log(`${client.name}: $${client.totalSpent}`));
