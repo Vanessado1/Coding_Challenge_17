@@ -15,10 +15,21 @@ class Customer {
         return this.purchaseHistory.reduce((total, amount) => total + amount, 0);
     }
 }
-// created a new customer 
-let customer1 = new Customer('Beth Andy', 'beth.andy@gmail.com');
-// add purchases to purchase history 
-customer1.addPurchase(67);
-customer1.addPurchase(164);
-// log total amount spent by customers
-console.log(`Total spent by ${customer1.name}: $${customer1.getTotalSpent()}`);
+
+// task 2 
+// created a sales rep class
+class SalesRep {
+    constructor(name) {
+        this.name = name; // sales rep name 
+        this.clients = []; // array of clients 
+    }
+    // add customer to clients array 
+    addClient(customer) {
+        this.clients.push(customer);
+    }
+    // find client by name and return total amount spent 
+    getClientTotal(name) {
+        const client = this.clients.find(client => client.name === name);
+        return client ? client.getTotalSpent() : 0; // return total amount spent otherwise return 0 
+    }
+}
