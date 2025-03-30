@@ -55,23 +55,24 @@ let vipCustomer2 = new VIPCustomer('Janet Brown', 'j.brown482@gmail.com', 'Plati
 // added purchases to customers 
 customer1.addPurchase(34);
 customer2.addPurchase(56);
+vipCustomer1.addPurchase(590);
 vipCustomer1.addPurchase(90);
 vipCustomer2.addPurchase(120);
 // created sales rep and added customers to their client list 
-let SalesRep1 = new SalesRep('Alex Micheal');
-SalesRep1.addClient(customer1);
-SalesRep1.addClient(customer2);
-SalesRep1.addClient(vipCustomer1);
-SalesRep1.addClient(vipCustomer2);
+const salesRep1 = new SalesRep('Alex Micheal');
+salesRep1.addClient(customer1);
+salesRep1.addClient(customer2);
+salesRep1.addClient(vipCustomer1);
+salesRep1.addClient(vipCustomer2);
 // calculate total revenue from all customers
-let totalRevenue = SalesRep1.clients.reduce((total, client) => total + client.getTotalSpent(), 0);
+const totalRevenue = salesRep1.clients.reduce((total, client) => total + client.getTotalSpent(), 0);
 console.log(`Total revenue from all customers: $${totalRevenue}`);
 // find customers who spent more than $500
-let highSpenders = SalesRep1.clients.filter(client => client.getTotalSpent() > 500);
+const highSpenders = salesRep1.clients.filter(client => client.getTotalSpent() > 500);
 console.log(`Customers who spent over $500:`);
 highSpenders.forEach(client => console.log(`${client.name}: $${client.getTotalSpent()}`));
 // created an array of customer names and total spent 
-let customerSpending = SalesRep1.clients.map(client => ({
+const customerSpending = salesRep1.clients.map(client => ({
     name: client.name,
     totalSpent: client.getTotalSpent()
 }));
