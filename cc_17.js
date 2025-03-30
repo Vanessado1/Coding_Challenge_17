@@ -42,7 +42,7 @@ class VIPCustomer extends Customer {
     }
     // override getTotalSpent 
     getTotalSpent() {
-        const getTotalSpent = super.getTotalSpent(); // calls parent class
+        const totalSpent = super.getTotalSpent(); // calls parent class
         const loyaltyBonus = totalSpent * 0.10; // calculate 10% loyalty bonus 
         return totalSpent + loyaltyBonus; // return total spent with the bonus added 
     }
@@ -50,8 +50,8 @@ class VIPCustomer extends Customer {
 // created customers regular and vip
 let customer1 = new Customer('Beth Anderson', 'beth.andy@gmail.com');
 let customer2 = new Customer('Jonas Richy', 'richy3345@mgail.com');
-let vipCustomer1 = new VIPCustomer('Andy Johnson', 'johnson.a23@gmail.com');
-let vipCustomer2 = new VIPCustomer('Janet Brown', 'j.brown482@gmail.com');
+let vipCustomer1 = new VIPCustomer('Andy Johnson', 'johnson.a23@gmail.com', 'Gold');
+let vipCustomer2 = new VIPCustomer('Janet Brown', 'j.brown482@gmail.com', 'Platinum');
 // added purchases to customers 
 customer1.addPurchase(34);
 customer2.addPurchase(56);
